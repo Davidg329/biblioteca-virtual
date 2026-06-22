@@ -1,7 +1,7 @@
 // prestamos.test.js
 // Casos de prueba del modulo de prestamos
 
-const { calcularMulta, puedeRealizarPrestamo, puedeRenovar } = require('./prestamos');
+const { calcularMulta, puedeRealizarPrestamo, puedeRenovar, puedeReservarLibro } = require('./prestamos');
 
 describe('calcularMulta', () => {
   test('sin retraso (15 dias o menos) la multa es 0', () => {
@@ -38,5 +38,19 @@ describe('puedeRenovar', () => {
 
   test('no puede renovar si ya alcanzo el limite de renovaciones', () => {
     expect(puedeRenovar(0, 2)).toBe(false);
+  });
+});
+
+describe('puedeReservarLibro', () => {
+  test('no permite reservar si hay copias disponibles', () => {
+    expect(puedeReservarLibro(2, 0)).toBe(false);
+  });
+
+  test('permite reservar si no hay copias y el usuario no tiene reservas activas', () => {
+    expect(puedeReservarLibro(0, 0)).toBe(true);
+  });
+
+  test('no permite reservar si el usuario ya tiene una reserva activa', () => {
+    expect(puedeReservarLibro(0, 1)).toBe(false);
   });
 });
