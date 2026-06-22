@@ -1,0 +1,12 @@
+{
+  "name": "biblioteca-virtual-ci",
+  "version": "1.0.0",
+  "description": "Modulo de pruebas e integracion continua para el sistema de prestamos de la Biblioteca Virtual",
+  "main": "prestamos.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
