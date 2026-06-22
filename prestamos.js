@@ -32,4 +32,14 @@ function puedeRenovar(multaPendiente, vecesRenovado) {
   return vecesRenovado < LIMITE_RENOVACIONES;
 }
 
-module.exports = { calcularMulta, puedeRealizarPrestamo, puedeRenovar };
+// Permite reservar un libro cuando no hay copias disponibles, siempre que el usuario
+// no tenga reservas activas previas (maximo 1 reserva simultanea por usuario)
+function puedeReservarLibro(copiasDisponibles, reservasActivasUsuario) {
+  if (copiasDisponibles > 0) {
+    return false; // si hay copias disponibles, no es necesario reservar
+  }
+
+  return reservasActivasUsuario === 0;
+}
+
+module.exports = { calcularMulta, puedeRealizarPrestamo, puedeRenovar, puedeReservarLibro };
