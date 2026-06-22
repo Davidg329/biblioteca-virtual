@@ -1,0 +1,28 @@
+name: Pipeline de Pruebas
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Obtener codigo fuente
+        uses: actions/checkout@v4
+
+      - name: Preparar entorno Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Instalar paquetes del proyecto
+        run: npm ci || npm install
+
+      - name: Correr suite de pruebas
+        run: npm test
