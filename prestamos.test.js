@@ -9,7 +9,9 @@ describe('calcularMulta', () => {
   });
 
   test('con 3 dias de retraso la multa es de 4500', () => {
-    expect(calcularMulta(18)).toBe(4500);
+    // PRUEBA ROTA A PROPOSITO para generar el estado fallido (pipeline en rojo)
+    // El valor correcto es 4500, aqui se deja un valor incorrecto de forma intencional
+    expect(calcularMulta(18)).toBe(8000);
   });
 
   test('con 10 dias de retraso la multa es de 15000', () => {
